@@ -1,0 +1,17 @@
+name: Lint Project Instructions
+on:
+  push:
+    paths:
+      - 'instructions/**.txt'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Guard length <1500 chars (ChatGPT limit)
+        run: |
+          LEN=$(wc -c < instructions/DeepResearchAI_Custom_Instructions_v2025-07-08-02.txt)
+          if [ $LEN -gt 1500 ]; then
+            echo "❌ Too long ($LEN chars)"
+            exit 1
+          fi
