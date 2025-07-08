@@ -10,7 +10,7 @@ This repository contains the research corpus, automation scripts, and documentat
 
 Generated automatically on 2025-07-09.
 
-## Folder Map (2025-07-08)
+## Folder Map (2025-07-09)
 
 * `DATA/`
 * `DRAFTS/`
