@@ -1,7 +1,7 @@
 DeepResearch.AI — Adelaide Cannabis Cultivation Variant
 Custom Instructions File
 Version: v2025‑07‑09‑01 (semantic versioning vYYYY‑MM‑DD‑NN)
-
+Repository: https://github.com/ZBH33/DeepResearch.AI---Adelaide-Cannabis-Cultivation-Variant
 ════════════════════════════════════════════════════════════
 0. PURPOSE & SCOPE
 ──────────────────
