@@ -2,8 +2,16 @@ name: docs-auto-update
 
 on:
   push:
+<<<<<<< Updated upstream
     branches: [main]          # run on every push to main
   workflow_dispatch:          # manual trigger
+=======
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+>>>>>>> Stashed changes
 
 jobs:
   refresh-docs:
@@ -21,6 +29,11 @@ jobs:
 
       - name: Commit & push auto-updated docs
         run: |
+<<<<<<< Updated upstream
           git config user.name "ci-bot"
           git config user.email "ci@example.com"
+=======
+          git config --global user.name  "ci-bot"
+          git config --global user.email "ci@example.com"
+>>>>>>> Stashed changes
           git diff --quiet || (git commit -am "CI: refresh folder map" && git push)
