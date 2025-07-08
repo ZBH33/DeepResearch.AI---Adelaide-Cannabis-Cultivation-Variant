@@ -1,7 +1,27 @@
-- name: Refresh docs folder map
-  run: python scripts/update_docs_map.py
-- name: Commit auto-updated docs
-  run: |
-    git config user.name "ci-bot"
-    git config user.email "ci@example.com"
-    git diff --quiet || git commit -am "CI: refresh folder map"
+name: docs-auto-update
+
+on:
+  # Runs on every push to main and manual dispatch
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  refresh-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Refresh docs folder map
+        run: python scripts/update_docs_map.py
+
+      - name: Commit & push auto-updated docs
+        run: |
+          git config user.name "ci-bot"
+          git config user.email "ci@example.com"
+          git diff --quiet || (git commit -am "CI: refresh folder map" && git push)

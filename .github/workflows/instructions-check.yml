@@ -1,5 +1,7 @@
 name: verify-instructions-folder
-on: [pull_request]
+
+on:
+  pull_request:
 
 jobs:
   guard:
@@ -9,5 +11,6 @@ jobs:
       - name: Fail if /instructions/ is empty
         run: |
           if [ -z "$(ls instructions | grep '^DeepResearchAI_Custom_Instructions_')" ]; then
-            echo '::error ::instructions folder is empty or mis-named'; exit 1
+            echo '::error ::instructions folder is empty or mis-named'
+            exit 1
           fi
