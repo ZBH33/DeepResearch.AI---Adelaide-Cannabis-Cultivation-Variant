@@ -1,1 +1,47 @@
-# Placeholder workflow – will be generated in next step
+name: Sync Research to GitHub
+
+on:
+  workflow_dispatch:          # manual trigger button
+  push:                       # whenever you commit locally
+    paths:
+      - 'research/**'         # only trigger on research updates
+      - '.github/workflows/research-sync.yml'
+
+env:
+  TARGET_BRANCH: DeepResearch.AI.AdelaideCannabisCultivationVariant
+
+jobs:
+  push-research:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1 Check out the target branch
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+
+      # 2 Copy new or updated research from working directory (adjust path if needed)
+      - name: Copy research artifacts
+        run: |
+          mkdir -p research
+          rsync -av --delete ./research/ ./research/
+
+      # 3 Commit & push
+      - name: Commit and push
+        env:
+          GH_TOKEN: ${{ secrets.DR_PAT }}
+          GIT_AUTHOR_NAME:  ${{ secrets.GIT_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.GIT_EMAIL }}
+          GIT_COMMITTER_NAME:  ${{ secrets.GIT_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_EMAIL }}
+        run: |
+          git config --global user.name  "$GIT_AUTHOR_NAME"
+          git config --global user.email "$GIT_AUTHOR_EMAIL"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "🤖 Auto-sync research $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            git push https://$GH_TOKEN@github.com/${{ github.repository }} HEAD:$TARGET_BRANCH
+          fi
