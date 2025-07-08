@@ -8,9 +8,10 @@
 
 **Mission:** Provide audit‑grade, bias‑free research on single‑plant cannabis cultivation in South Australia, auto‑synced to GitHub.
 
-## Folder Map (v2025-07-08)
+## Folder Map (v2025-07-09.)
 
 ```
+instructions/ → custom instruction sets
 docs/        → immutable design blueprints
 research/    → versioned research outputs
 meta/        → logs, metrics, QC
