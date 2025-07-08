@@ -1,64 +1,54 @@
-name: Sync Research to GitHub
+name: research-sync
 
 on:
+  # Runs when anything in research/ or the research log changes,
+  # and can also be triggered manually.
   push:
     branches: [main]
     paths:
       - 'research/**'
-      - '.github/workflows/research-sync.yml'
+      - 'meta/research_log.md'
   workflow_dispatch:
+
+# Default token is read‑only; we push with our fine‑grained PAT in secrets.DR_PAT
+permissions:
+  contents: read
 
 env:
   TARGET_BRANCH: DeepResearch.AI.AdelaideCannabisCultivationVariant
 
 jobs:
-  sync:
+  sync-research:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout bot branch
+      - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          ref: ${{ env.TARGET_BRANCH }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Generate Index & Research Log
+      - name: Set up Git identity from secrets
         run: |
-          python <<'PY'
-          import pathlib, datetime
-          root = pathlib.Path('.')
-          processed_files = sorted(root.glob('research/processed/*.md'))
-          toc_lines = ['# Research Index\n']
-          for file in processed_files:
-              rel_p = file.relative_to(root)
-              title = next((ln[2:].strip() for ln in file.read_text().splitlines() if ln.startswith('# ')), file.name)
-              toc_lines.append(f"- [{title}]({rel_p.as_posix()})")
-          (root/'research/index.md').write_text('\n'.join(toc_lines)+'\n')
-          with (root/'meta/research_log.md').open('a') as logf:
-              logf.write(f"{datetime.date.today()} – Auto‑indexed {len(processed_files)} files\n")
-          PY
+          git config --global user.name  "${{ secrets.GIT_NAME }}"
+          git config --global user.email "${{ secrets.GIT_EMAIL }}"
+
+      - name: Debug — show PAT length (will not print the token itself)
+        run: echo "DR_PAT length: ${#{{ secrets.DR_PAT }}}"
+
+      # ------------------------------------------------------------
+      #  Add or update your indexing script here if needed, e.g.:
+      #  python scripts/build_index.py
+      # ------------------------------------------------------------
+
+      - name: Stage research index and log
+        run: |
+          git add research/index.md meta/research_log.md || true
 
       - name: Commit & Push
         env:
           GH_TOKEN: ${{ secrets.DR_PAT }}
-          GIT_AUTHOR_NAME: ${{ secrets.GIT_NAME }}
-          GIT_AUTHOR_EMAIL: ${{ secrets.GIT_EMAIL }}
-          GIT_COMMITTER_NAME: ${{ secrets.GIT_NAME }}
-          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_EMAIL }}
         run: |
-          git config --global user.name  "$GIT_AUTHOR_NAME"
-          git config --global user.email "$GIT_AUTHOR_EMAIL"
-          git add research/index.md meta/research_log.md
-          git add research || true
-          git add docs || true
           if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            msg=$(cat commit_message_template.txt)
-            git commit -m "$msg"
-            git push https://$GH_TOKEN@github.com/${{ github.repository }} HEAD:$TARGET_BRANCH
+            echo "No changes to commit."
+            exit 0
           fi
+          git commit -m "CI: auto-index research on $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push https://$GH_TOKEN@github.com/${{ github.repository }} HEAD:$TARGET_BRANCH
