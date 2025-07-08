@@ -9,3 +9,17 @@
 This repository contains the research corpus, automation scripts, and documentation for the **Adelaide Cannabis Cultivation Variant** of DeepResearch.AI.
 
 Generated automatically on 2025-07-09.
+
+## Folder Map (2025-07-08)
+
+* `DATA/`
+* `DRAFTS/`
+* `IMAGES/`
+* `REPORTS/`
+* `archive/`
+* `docs/`
+* `instructions/`
+* `meta/`
+* `research/`
+* `scripts/`
+* `templates/`
