@@ -1,10 +1,9 @@
 name: docs-auto-update
 
 on:
-  # Runs on every push to main and manual dispatch
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches: [main]          # run on every push to main
+  workflow_dispatch:          # manual trigger
 
 jobs:
   refresh-docs:
