@@ -2,8 +2,11 @@ name: docs-auto-update
 
 on:
   push:
-    branches: [main]          # run on every push to main
-  workflow_dispatch:          # manual trigger
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   refresh-docs:
@@ -21,6 +24,6 @@ jobs:
 
       - name: Commit & push auto-updated docs
         run: |
-          git config user.name "ci-bot"
-          git config user.email "ci@example.com"
+          git config --global user.name  "ci-bot"
+          git config --global user.email "ci@example.com"
           git diff --quiet || (git commit -am "CI: refresh folder map" && git push)
