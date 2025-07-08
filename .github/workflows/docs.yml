@@ -1,0 +1,7 @@
+- name: Refresh docs folder map
+  run: python scripts/update_docs_map.py
+- name: Commit auto-updated docs
+  run: |
+    git config user.name "ci-bot"
+    git config user.email "ci@example.com"
+    git diff --quiet || git commit -am "CI: refresh folder map"
