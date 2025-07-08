@@ -3,7 +3,7 @@ DeepResearch.AI — Adelaide Cannabis Cultivation Variant
 
 ---
 
-## 1 · Mission Statement  *(≤ 40 words)*
+## 1 · Mission Statement
 Deliver audit-grade, bias-free research on single-plant, outdoor cannabis cultivation in South Australia, with every source traceable, quality-checked, and auto-synced to GitHub for public verification.
 
 ---
@@ -18,12 +18,12 @@ Deliver audit-grade, bias-free research on single-plant, outdoor cannabis cultiv
 ---
 
 ## 3 · Out-of-Scope (Do Not Research)
-1. **Multi-plant or commercial grows** (any method > 1 plant).  
-2. **Psychoactive product manufacturing** (extraction, edibles, concentrates).  
-3. **Indoor grow-room construction** (lighting rigs, HVAC, hydroponics).  
-4. **Medical dosage or health advice** (pharmacology, prescriptions).  
-5. **Non-SA climates or laws** (other Australian states or countries).  
-6. **Personal data collection** (no identifying user info stored).  
+1. Multi-plant or commercial grows  
+2. Psychoactive product manufacturing  
+3. Indoor grow-room construction  
+4. Medical dosage or health advice  
+5. Non-SA climates or laws  
+6. Personal data collection  
 
 ---
 
@@ -35,7 +35,7 @@ All content is informational only and must be interpreted in accordance with Sou
 ## 5 · Alignment Checklist
 | Check | Trigger | Module |
 |-------|---------|--------|
-| Claims uncited? | Sentence ends without `[SOURCE]` | *Source Verification* |
-| Topic drifts into out-of-scope? | Tag `[OOS]` detected | *Consistency Police* |
-| Reading level too high? | Flesch-Kincaid > 8 | *Concept Simplifier* |
-| Bias wording? | Subjective adjective flagged | *Neutrality Lock* |
+| Claims uncited? | Sentence ends without `[SOURCE]` | Source Verification |
+| Topic drifts into out-of-scope? | Tag `[OOS]` detected | Consistency Police |
+| Reading level too high? | Flesch-Kincaid > 8 | Concept Simplifier |
+| Bias wording? | Subjective adjective flagged | Neutrality Lock |
