@@ -4,16 +4,8 @@
 ![QC](https://img.shields.io/badge/QC-PASS-brightgreen?style=flat-square)
 
 
-# DeepResearch.AI — Adelaide Cannabis Cultivation Variant
+# DeepResearch.AI – Adelaide Cannabis Cultivation Variant
 
-**Mission:** Provide audit‑grade, bias‑free research on single‑plant cannabis cultivation in South Australia, auto‑synced to GitHub.
+This repository contains the research corpus, automation scripts, and documentation for the **Adelaide Cannabis Cultivation Variant** of DeepResearch.AI.
 
-## Folder Map (2025-07-08)
-
-* `archive/`
-* `docs/`
-* `instructions/`
-* `meta/`
-* `research/`
-* `scripts/`
-* `templates/`
+Generated automatically on 2025-07-09.
