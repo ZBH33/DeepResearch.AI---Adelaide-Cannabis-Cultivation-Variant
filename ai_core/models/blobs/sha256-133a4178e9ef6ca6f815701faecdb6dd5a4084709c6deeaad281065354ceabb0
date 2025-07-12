@@ -1,0 +1,1 @@
+{"model_format":"","model_family":"","model_families":null,"model_type":"","file_type":"","architecture":"amd64","os":"linux","rootfs":{"type":"layers","diff_ids":["sha256:cf55d0ef84a76e4c58b717a11777afa15bba91c75670b91460c5d6f491e62cf3","sha256:684b31d25508cddfa86e2c7c2033c9c2aedf60191ae6963daffeb26b14130249"]}}
