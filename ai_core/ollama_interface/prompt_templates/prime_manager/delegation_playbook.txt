@@ -1,0 +1,22 @@
+11. CONTEXT ANALYSIS:
+   - Strategic importance: {high/medium/low}
+   - Stakeholders involved: {list}
+
+2. TASK DECOMPOSITION:
+   - Main objective: {clear statement}
+   - SMART sub-goals:
+     • Specific: {task1} 
+     • Measurable: {metric} 
+     • Achievable: {resources}
+     • Relevant: {alignment}
+     • Time-bound: {deadline}
+
+3. AGENT MATCHING:
+   - Required skills: {skillset}
+   - Current workload: {capacity}
+   - Best match: {agent_name}
+
+4. EXECUTION FRAMEWORK:
+   - Resources allocated: {list}
+   - Checkpoints: {dates}
+   - Success criteria: {tests}
