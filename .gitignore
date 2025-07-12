@@ -1,20 +1,37 @@
-*.exe
-*.exe
+# Ollama-specific files
+.ollama/
+ollama/
+ollama_models/
+models/  # Only include if you store models here (usually not tracked)
+ollama.log
 
-# Data
-/data/
-/outputs/
+# Common model file extensions (adjust as needed)
+*.gguf
+*.bin
+*.pth
+*.safetensors
+*.msgpack
+*.h5
+*.pt
 
-# Models
-/models/local/
-/models/*.bin
-/models/*.gguf
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-# System
+# Environment/config files
+.env
+.env.local
+.venv/
+venv/
+
+# OS metadata
 .DS_Store
 Thumbs.db
 
-# Python
-__pycache__/
-*.pyc
-.env
+# Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
