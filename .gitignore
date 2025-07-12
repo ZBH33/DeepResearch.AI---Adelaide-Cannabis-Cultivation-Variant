@@ -1,2 +1,20 @@
 *.exe
 *.exe
+
+# Data
+/data/
+/outputs/
+
+# Models
+/models/local/
+/models/*.bin
+/models/*.gguf
+
+# System
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.env
